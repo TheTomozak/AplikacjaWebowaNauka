@@ -1,6 +1,15 @@
 2xShift i wpisujemy Maven 
 mvn clean usuwa folder target 
 
+mvn clean package  =lepiej tak używaż ponieważ to co powstaje z folderu target pochodzi z naszego aktualnego kodu źródłowego 
+mvn package = tworzenie .jar, kiedy wykonujemy package to przed tym wykonuje się validate, compile, test i na końcu package
+bazuje na tym: " <groupId>io.github.mat3e</groupId>
+				<artifactId>hello</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<packaging>jar</packaging>"
+				
+mvn install = instaluje naszego jara wewnątrz lokaldnego repozytorium 
+				
 Skróty:
 2xShift = wyszukiwarka 
 ctrl and click  = go to pressed
