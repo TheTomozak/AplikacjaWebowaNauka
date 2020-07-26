@@ -1,3 +1,6 @@
-Skróty:
+2xShift i wpisujemy Maven 
+mvn clean usuwa folder target 
 
+Skróty:
 2xShift = wyszukiwarka 
+ctrl and click  = go to pressed
