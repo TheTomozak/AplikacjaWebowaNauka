@@ -1,0 +1,3 @@
+Skróty:
+
+2xShift = wyszukiwarka 
