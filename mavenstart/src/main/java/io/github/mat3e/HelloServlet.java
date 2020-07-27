@@ -18,7 +18,19 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.info("Request got");
-        resp.getWriter().write("Hello world!");
+
+
+        String queryParameter = req.getParameter("name");
+        if (queryParameter==null){
+            LOGGER.info("Request got");
+            resp.getWriter().write("Hello world!");
+        }else {
+            LOGGER.info("Request got with parameter");
+            String message = String.format("Hello %s!", queryParameter);
+            resp.getWriter().write(message);
+        }
+
+        
+
     }
 }
