@@ -10,6 +10,16 @@ bazuje na tym: " <groupId>io.github.mat3e</groupId>
 				
 mvn install = instaluje naszego jara wewnątrz lokaldnego repozytorium 
 				
+Query paramatry = w Gecie wysyłane są w url w postaci klucz wartosć & klucz wartośc
+
+servlet rodzaj klasy który pozwala obsługiwać nam requesty i responsy
+
+Warto przypisać loggera jako prywante finalne pole 
+				
 Skróty:
 2xShift = wyszukiwarka 
 ctrl and click  = go to pressed
+
+Słownik:
+Enkapsulacja (inaczej hermetyzacja) to ukrywanie widoczności pól danej klasy dla innych klas,
+co w ten sposób chroni dane przechowywane w tych polach przed niepowołanym, lub co najmniej nieuzasadnionym dostępem
