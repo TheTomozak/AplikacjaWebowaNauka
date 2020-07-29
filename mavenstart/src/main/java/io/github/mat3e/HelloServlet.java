@@ -15,6 +15,7 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
 
     private static final String NAME_PARAM = "name";
+    private static final String LANG_PARAM = "lang";
     private final Logger LOGGER = LoggerFactory.getLogger(HelloServlet.class);
 
     private HelloService service;
@@ -37,7 +38,8 @@ public class HelloServlet extends HttpServlet {
         LOGGER.info("Got request with parameters " + req.getParameterMap());
 
         String name = req.getParameter(NAME_PARAM);
-        String greeting = service.prepareGreeting(name);
+        String lang = req.getParameter(LANG_PARAM);
+        String greeting = service.prepareGreeting(name, lang);
         resp.getWriter().write(greeting);
 
 //        String queryParameter = req.getParameter("name");
