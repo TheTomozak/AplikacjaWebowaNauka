@@ -20,6 +20,7 @@ Skróty:
 2xShift = wyszukiwarka 
 ctrl and click  = go to pressed
 crtl p = odpala pomoc co można wpisać w dane miejsce(jakie parametry)
+ctrl + alt + v = robi z nam podanego fragmentu kodu zmienną
 
 Słownik:
 Enkapsulacja (inaczej hermetyzacja) to ukrywanie widoczności pól danej klasy dla innych klas,
