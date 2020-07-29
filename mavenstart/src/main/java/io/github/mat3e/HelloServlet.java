@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Optional;
 
 @WebServlet(name = "Hello", urlPatterns = {"/api/*"})
 public class HelloServlet extends HttpServlet {
@@ -18,13 +17,28 @@ public class HelloServlet extends HttpServlet {
     private static final String NAME_PARAM = "name";
     private final Logger LOGGER = LoggerFactory.getLogger(HelloServlet.class);
 
+    private HelloService service;
+
+    /**
+     * Servlet container needs it.
+     */
+    @SuppressWarnings("unused")
+    public HelloServlet() {
+        this(new HelloService());
+    }
+
+    HelloServlet(HelloService service) {
+        this.service = service;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    LOGGER.info("Got request with parameters "+ req.getParameterMap());
+        LOGGER.info("Got request with parameters " + req.getParameterMap());
 
-    var name  = Optional.ofNullable(req.getParameter(NAME_PARAM)).orElse("world");
-    resp.getWriter().write("Hello " +name +"!");
+        String name = req.getParameter(NAME_PARAM);
+        String greeting = service.prepareGreeting(name);
+        resp.getWriter().write(greeting);
 
 //        String queryParameter = req.getParameter("name");
 //        if (queryParameter==null){
@@ -35,7 +49,6 @@ public class HelloServlet extends HttpServlet {
 //            String message = String.format("Hello %s!", queryParameter);
 //            resp.getWriter().write(message);
 //        }
-
 
 
     }
