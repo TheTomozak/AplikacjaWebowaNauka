@@ -24,3 +24,10 @@ crtl p = odpala pomoc co można wpisać w dane miejsce(jakie parametry)
 Słownik:
 Enkapsulacja (inaczej hermetyzacja) to ukrywanie widoczności pól danej klasy dla innych klas,
 co w ten sposób chroni dane przechowywane w tych polach przed niepowołanym, lub co najmniej nieuzasadnionym dostępem
+
+SOLID:  
+S(SRP) = Single responsibility principle (Zasada jednej odpowiedzialności)
+O(OCP) = Open/closed principle (Zasada otwarte-zamknięte)
+L(LSP) = Liskov substitution principle (Zasada podstawienia Liskov)
+I(ISP) = Interface segregation principle (Zasada segregacji interfejsów)
+D(DIP) = Dependency inversion principle (Zasada odwrócenia zależności)
