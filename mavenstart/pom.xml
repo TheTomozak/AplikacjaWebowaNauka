@@ -70,7 +70,6 @@
             <version>5.4.19.Final</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
@@ -103,13 +102,13 @@
             </plugin>
             <!--db-->
             <plugin>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-maven-plugin</artifactId>
-            <version>6.5.3</version>
-            <configuration>
-                <url>jdbc:h2:file:./db</url>
-                <user>sa</user>
-            </configuration>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>6.5.3</version>
+                <configuration>
+                    <url>jdbc:h2:file:./db</url>
+                    <user>sa</user>
+                </configuration>
             </plugin>
 
         </plugins>
