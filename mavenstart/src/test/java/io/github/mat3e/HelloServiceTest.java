@@ -10,6 +10,7 @@ public class HelloServiceTest {
 
 
     private final static String WELCOME = "Hello";
+    private final static String FALLBACK_ID_WELCOME = "Hola";
 
     @Test
     public void test_PrepareGreeting_nullName_returnsGreetingWithFallback() {
@@ -43,23 +44,60 @@ public class HelloServiceTest {
     @Test
     public void test_PrepareGreeting_nullLang_returnsGreetingWithFallbackIdLang() {
         //given
-        var fallbackIdWelcome = "Hola";
-        var mockreposiotry = new LangRepository() {
-            @Override
-            Optional<Lang> findById(Long id) {
-                if (id.equals(HelloService.FALLBACK_LANG.getId())) {
-                    return Optional.of(new Lang(null, fallbackIdWelcome, null));
-                }
-                return Optional.empty();
-            }
-        };
+
+        var mockreposiotry = fallbackLangIdRepository();
         var SUT = new HelloService(mockreposiotry); //system under test
 
         //when
         var result = SUT.prepareGreeting(null, null);
 
         //then
-        assertEquals(fallbackIdWelcome+ " " + HelloService.FALLBACK_NAME + "!", result);
+        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
+    }
+
+    @Test
+    public void test_PrepareGreeting_textLang_returnsGreetingWithFallbackIdLang() {
+        //given
+
+        var mockreposiotry = fallbackLangIdRepository();
+        var SUT = new HelloService(mockreposiotry); //system under test
+
+        //when
+        var result = SUT.prepareGreeting(null, "abc");
+
+        //then
+        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
+    }
+
+    @Test
+    public void test_prepareGreeting_nonExistingLang_returnsGreetingWithFallbackLang() {
+        //given
+
+        var mockreposiotry = new LangRepository() {
+            @Override
+            Optional<Lang> findById(Long id) {
+                return Optional.empty();
+            }
+        };
+        var SUT = new HelloService(mockreposiotry); //system under test
+
+        //when
+        var result = SUT.prepareGreeting(null, "-1");
+
+        //then
+        assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
+    }
+
+    private LangRepository fallbackLangIdRepository() {
+        return new LangRepository() {
+            @Override
+            Optional<Lang> findById(Long id) {
+                if (id.equals(HelloService.FALLBACK_LANG.getId())) {
+                    return Optional.of(new Lang(null, FALLBACK_ID_WELCOME, null));
+                }
+                return Optional.empty();
+            }
+        };
     }
 
 
