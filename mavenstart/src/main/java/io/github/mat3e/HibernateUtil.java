@@ -14,7 +14,7 @@ public class HibernateUtil {
         }
     }
 
-    static SessionFactory getSessionFactory() { //fanrykator sesji, tworzenie połączen z
+   public static SessionFactory getSessionFactory() { //fanrykator sesji, tworzenie połączen z
         // baza podczas których mozemy wykonwyac tranzakcjie
         return sessionFactory;
     }

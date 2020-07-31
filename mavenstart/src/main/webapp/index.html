@@ -13,13 +13,8 @@
         <input type="text" class="pure-input-rounded" name="name" placeholder="name"/>
         <!--zeby pokazywało sie na szaro w podpowiedz co mamy wpisac dodajmey placeholder -->
 
-        <label class="pure-radio">
-            <input type="radio" name="lang" value="1" checked=""/>
-            🇺🇸
-        </label>
-        <label class="pure-radio">
-            <input type="radio" name="lang" value="2"/>
-            🇵🇱</label>
+        <fieldset id="langs"></fieldset>
+
         <!--żeby checkboxy sie odznaczały ze tylko jeden moze byc wcisniety to musza
         miec ten same name-->
 
@@ -33,6 +28,26 @@
 
 
 <script>
+    const API_URL = 'http://localhost:8080/api';
+    const CODE_TO_EMOJI = {
+        'pl': '🇵🇱',
+        'en': '🇺🇸',
+        'de': '🇩🇪',
+        'hr': '🇭🇷'
+    };
+
+    fetch(`${API_URL}/langs`)
+        .then(response => response.json())
+            .then((langArr) => {
+                const checkboxes = langArr.map(lang => `
+                <label class="pure-radio">
+            <input type="radio" name="lang" value="${lang.id}"/>
+            ${CODE_TO_EMOJI[lang.code]}
+            </label>
+                `).join('\n');
+                document.getElementById('langs').innerHTML = checkboxes;
+            });
+
     const div = document.getElementById('welcome');
     const form = document.getElementById('welcomeForm');
     document.getElementById('btn').addEventListener('click', (event) => {
@@ -43,11 +58,13 @@
             name: nameFromForm,
             lang: language
         };
-        fetch('http://localhost:8080/api?' + new URLSearchParams(formObject))
+
+
+        fetch(`${API_URL}?${new URLSearchParams(formObject)}`)
             .then((response) => {
                 return response.text();
             }).then((text) => {
-                div.innerHTML = `
+            div.innerHTML = `
                 <h2>${text}</h2>
                 `;
 
