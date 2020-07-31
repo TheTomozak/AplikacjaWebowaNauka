@@ -16,6 +16,7 @@ public class App {
 //        webapp.addServlet(HelloServlet.class, "/api/*");
         webapp.setResourceBase("src/main/webapp");
         webapp.setContextPath("/");
+        webapp.setInitParameter("org.eclipse.jetty.servlet.Default.maxCachedFiles", "0");
         webapp.setConfigurations(new Configuration[]
                 {
                         new AnnotationConfiguration(),

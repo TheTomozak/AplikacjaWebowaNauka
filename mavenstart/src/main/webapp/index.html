@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ULTIMATE TODO LIST</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+</head>
+<body>
+<h1>
+    <form id="welcomeForm" class="pure-form" style=" text-align:center">
+
+        <input type="text" class="pure-input-rounded" name="name" placeholder="name"/>
+        <!--zeby pokazywało sie na szaro w podpowiedz co mamy wpisac dodajmey placeholder -->
+
+        <label class="pure-radio">
+            <input type="radio" name="lang" value="1" checked=""/>
+            🇺🇸
+        </label>
+        <label class="pure-radio">
+            <input type="radio" name="lang" value="2"/>
+            🇵🇱</label>
+        <!--żeby checkboxy sie odznaczały ze tylko jeden moze byc wcisniety to musza
+        miec ten same name-->
+
+
+        <button id="btn" class="pure-button pure-button pure-button-active ">Submit</button>
+        <!--id musi byc uniklane-->
+    </form>
+
+    <div id="welcome" class="pure-form" style=" text-align:center"></div>
+</h1>
+
+
+<script>
+    const div = document.getElementById('welcome');
+    const form = document.getElementById('welcomeForm');
+    document.getElementById('btn').addEventListener('click', (event) => {
+        event.preventDefault(); //blokowanie tego ze nam samo uzupelnialo query stringa
+        const nameFromForm = form.elements.name.value;
+        const language = form.elements.lang.value;
+        const formObject = {
+            name: nameFromForm,
+            lang: language
+        };
+        fetch('http://localhost:8080/api?' + new URLSearchParams(formObject))
+            .then((response) => {
+                return response.text();
+            }).then((text) => {
+                div.innerHTML = `
+                <h2>${text}</h2>
+                `;
+
+        });
+        //zabezpiecznie przed wstrzykoiwaniem pozdapytan sql URLSearchParams
+    });
+</script>
+</body>
+</html>
