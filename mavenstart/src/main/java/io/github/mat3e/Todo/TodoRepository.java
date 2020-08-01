@@ -30,4 +30,23 @@ class TodoRepository {
         session.close();
         return result;
     }
+
+    Todo addTodo(Todo newTodo) {
+
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+
+        if (newTodo.getText().equals("")){
+            transaction.setRollbackOnly();
+            session.close();
+        }
+
+        session.persist(newTodo);   //zapisanie nowego obiektu w bazie
+        transaction.commit();
+        session.close();
+        return newTodo;
+    }
+
+
+
 }
