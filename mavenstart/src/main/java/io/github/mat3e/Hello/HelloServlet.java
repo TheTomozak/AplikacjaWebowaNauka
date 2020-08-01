@@ -43,7 +43,7 @@ public class HelloServlet extends HttpServlet {
         try {
             langId = Integer.valueOf(lang);
         }catch (NumberFormatException exc){
-            LOGGER.warn("Non-numeric lang id used");
+            LOGGER.warn("Non-numeric lang id used "+ lang);
         }
         String greeting = service.prepareGreeting(name, langId);
         resp.getWriter().write(greeting);

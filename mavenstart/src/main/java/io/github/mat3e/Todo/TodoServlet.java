@@ -39,4 +39,19 @@ public class TodoServlet extends HttpServlet {
         resp.setContentType("application/json;charset=UTF-8");
         mapper.writeValue(resp.getOutputStream(), repository.findAll());
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.info("Put request with parameters: ");
+        var pathInfo = req.getPathInfo();
+
+        try {
+            var todoId = Integer.valueOf(pathInfo.substring(1));
+            var todo = repository.toggleTodo(todoId);
+            resp.setContentType("application/json;charset=UTF-8");
+            mapper.writeValue(resp.getOutputStream(), todo);
+        } catch (NumberFormatException exc) {
+            LOGGER.warn("Wrong path: " + pathInfo);
+        }
+    }
 }
