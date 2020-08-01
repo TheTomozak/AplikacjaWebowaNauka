@@ -39,7 +39,13 @@ public class HelloServlet extends HttpServlet {
 
         String name = req.getParameter(NAME_PARAM);
         String lang = req.getParameter(LANG_PARAM);
-        String greeting = service.prepareGreeting(name, lang);
+        Integer langId = null;
+        try {
+            langId = Integer.valueOf(lang);
+        }catch (NumberFormatException exc){
+            LOGGER.warn("Non-numeric lang id used");
+        }
+        String greeting = service.prepareGreeting(name, langId);
         resp.getWriter().write(greeting);
 
 //        String queryParameter = req.getParameter("name");
