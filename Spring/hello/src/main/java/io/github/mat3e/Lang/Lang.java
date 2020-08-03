@@ -13,7 +13,8 @@ public class Lang {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Integer id;
-@Column(name = "welcomemsg")    //musimy zmienić ponieważ spring przyjął że nasz welcomeMsg w bazie dnaych jest zapisany jako welcome_msg
+    @Column(name = "welcomemsg")
+    //musimy zmienić ponieważ spring przyjął że nasz welcomeMsg w bazie dnaych jest zapisany jako welcome_msg
     private String welcomeMsg;
     private String code;
 
