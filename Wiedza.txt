@@ -1,3 +1,35 @@
-Skróty:
+2xShift i wpisujemy Maven 
+mvn clean usuwa folder target 
 
+mvn clean package  =lepiej tak używaż ponieważ to co powstaje z folderu target pochodzi z naszego aktualnego kodu źródłowego 
+mvn package = tworzenie .jar, kiedy wykonujemy package to przed tym wykonuje się validate, compile, test i na końcu package
+bazuje na tym: " <groupId>io.github.mat3e</groupId>
+				<artifactId>hello</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<packaging>jar</packaging>"
+				
+mvn install = instaluje naszego jara wewnątrz lokaldnego repozytorium 
+				
+Query paramatry = w Gecie wysyłane są w url w postaci klucz wartosć & klucz wartośc
+
+servlet rodzaj klasy który pozwala obsługiwać nam requesty i responsy
+
+Warto przypisać loggera jako prywante finalne pole 
+				
+Skróty:
 2xShift = wyszukiwarka 
+ctrl and click  = go to pressed
+crtl p = odpala pomoc co można wpisać w dane miejsce(jakie parametry)
+ctrl + alt + v = robi z nam podanego fragmentu kodu zmienną
+ctrl + space = autouzupełnianie
+
+Słownik:
+Enkapsulacja (inaczej hermetyzacja) to ukrywanie widoczności pól danej klasy dla innych klas,
+co w ten sposób chroni dane przechowywane w tych polach przed niepowołanym, lub co najmniej nieuzasadnionym dostępem
+
+SOLID:  
+S(SRP) = Single responsibility principle (Zasada jednej odpowiedzialności)
+O(OCP) = Open/closed principle (Zasada otwarte-zamknięte)
+L(LSP) = Liskov substitution principle (Zasada podstawienia Liskov)
+I(ISP) = Interface segregation principle (Zasada segregacji interfejsów)
+D(DIP) = Dependency inversion principle (Zasada odwrócenia zależności)
