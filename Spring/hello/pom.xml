@@ -18,6 +18,8 @@
 		<java.version>11</java.version>
 	</properties>
 
+<!--Wersje zależności są  zarządzane przez spring boota, parenta-->
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

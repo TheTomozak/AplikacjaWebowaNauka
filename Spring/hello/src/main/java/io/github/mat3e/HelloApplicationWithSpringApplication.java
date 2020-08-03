@@ -8,6 +8,6 @@ public class HelloApplicationWithSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloApplicationWithSpringApplication.class, args);
-	}
+	} //tomcat wbudowany w funkcje główną
 
 }
